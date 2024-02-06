@@ -1,0 +1,40 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+{% load static %}
+    <h1 class="d-flex justify-content-center Display-1" >Zynx's Portfolio</h1>
+
+    <img class="rounded mx-auto d-block" src="{% static 'portfolio/me.png' %}" >
+
+
+<div class="album py-5 bg-light">
+<div class="container">
+    <div class="row">
+        {% for project in projects %}
+                    <div class="col-md-4">
+            <div class="card mb-4">
+            <h2 class="d-flex justify-content-center" >{{ project.title }}</h2>
+            <p class="d-flex justify-content-center" >{{ project.description }}</p>
+                {% if project.url %}
+            <a class="text-center" href="{{ project.url }}">
+            {% endif %}
+          <img id="port_pic" class="rounded mx-auto d-block" src="{{ project.image.url }}" height="220" width="220">
+
+            </a>
+
+            </div>
+            </div>
+    {% endfor %}
+
+    </div>
+</div>
+</div>
+
+</div>
+
+  </div>
+
+
+
+
+{% endblock %}

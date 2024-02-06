@@ -1,0 +1,15 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+<h1 class="d-flex justify-content-center display-1 text-primary">Blog Posts</h1>
+<h2 class="d-flex justify-content-center">I've  written {{ blogs.count }} blog{{ blogs.count|pluralize }}</h2>
+{% for blog in blogs %}
+    <br>
+    <div class="container justify-content-between">
+<a class="d-flex justify-content-left" href="{% url 'blog:detail' blog.id %}"><h2>{{ blog.title }}</h2></a>
+<h5 class="d-flex justify-content-left text-muted">{{ blog.date|date:'F jS Y' }}</h5>
+<p class="d-flex justify-content-left">{{ blog.description|truncatechars:100 }}</p>
+    </div>
+{% endfor %}
+
+{% endblock %}
